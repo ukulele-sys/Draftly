@@ -1,0 +1,6 @@
+{
+  "name": "Draftly",
+  "description": "An intelligent email companion to automatically summarize, categorize, and draft replies for your Gmail inbox.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

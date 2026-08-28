@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-app: #0D0D0D;
+  --bg-card: #151515;
+  --bg-hover: #1E1E1E;
+  --text-primary: #E0E0E0;
+  --text-secondary: #888888;
+  --text-white: #FFFFFF;
+  --border-color: #2A2A2A;
+  --border-light: rgba(42, 42, 42, 0.4);
+}
+
+:root.light {
+  --bg-app: #F5F5F7;
+  --bg-card: #FFFFFF;
+  --bg-hover: #EBEBEF;
+  --text-primary: #1D1D1F;
+  --text-secondary: #6E6E73;
+  --text-white: #1D1D1F;
+  --border-color: #D2D2D7;
+  --border-light: rgba(210, 210, 215, 0.4);
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-app-bg: var(--bg-app);
+  --color-app-card: var(--bg-card);
+  --color-app-hover: var(--bg-hover);
+  --color-app-text: var(--text-primary);
+  --color-app-muted: var(--text-secondary);
+  --color-app-white: var(--text-white);
+  --color-app-border: var(--border-color);
+  --color-app-border-light: var(--border-light);
+}
+
+/* Custom fade-in animations for rich UI experience */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Custom pulse for high-priority items */
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s ease-in-out infinite;
+}
+
+/* Glassmorphism and modern depth styling variables */
+.glass-card {
+  background: rgba(21, 21, 21, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+:root.light .glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
+.glow-indigo {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.glow-rose {
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.3);
+}
+
+.glow-amber {
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.glow-white {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+:root.light .glow-indigo {
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+:root.light .glow-emerald {
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+:root.light .glow-rose {
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.2);
+}
+
+:root.light .glow-amber {
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+:root.light .glow-white {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Beautiful custom scrollbars for dark slate background */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* HIGH FIDELITY LIGHT MODE OVERRIDES */
+:root.light .bg-\[\#0D0D0D\] {
+  background-color: var(--bg-app) !important;
+}
+
+:root.light .bg-\[\#151515\] {
+  background-color: var(--bg-card) !important;
+}
+
+:root.light .hover\:bg-\[\#151515\]\/30:hover {
+  background-color: var(--bg-hover) !important;
+}
+
+:root.light .bg-\[\#151515\]\/20 {
+  background-color: var(--bg-hover) !important;
+}
+
+:root.light .bg-\[\#151515\]\/30 {
+  background-color: var(--bg-hover) !important;
+}
+
+:root.light .hover\:bg-\[\#1a1a1a\]:hover {
+  background-color: var(--bg-hover) !important;
+}
+
+:root.light .bg-neutral-900 {
+  background-color: #EBEBEF !important;
+  color: #1D1D1F !important;
+}
+
+:root.light .text-\[\#E0E0E0\] {
+  color: var(--text-primary) !important;
+}
+
+:root.light .text-\[\#BBB\] {
+  color: var(--text-primary) !important;
+}
+
+:root.light .text-slate-300 {
+  color: var(--text-primary) !important;
+}
+
+:root.light .text-[#AAA] {
+  color: var(--text-secondary) !important;
+}
+
+:root.light .text-\[\#AAA\] {
+  color: var(--text-secondary) !important;
+}
+
+:root.light .text-\[\#888\] {
+  color: var(--text-secondary) !important;
+}
+
+:root.light .text-\[\#555\] {
+  color: var(--text-secondary) !important;
+}
+
+:root.light .text-white {
+  color: var(--text-primary) !important;
+}
+
+:root.light .text-white\/50 {
+  color: var(--text-secondary) !important;
+}
+
+:root.light .border-\[\#2A2A2A\] {
+  border-color: var(--border-color) !important;
+}
+
+:root.light .border-\[\#2A2A2A\]\/30 {
+  border-color: var(--border-light) !important;
+}
+
+:root.light .border-\[\#2A2A2A\]\/60 {
+  border-color: var(--border-color) !important;
+}
+
+:root.light .divide-\[\#2A2A2A\]\/40 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--border-light) !important;
+}
+
+/* Ensure icons and other critical controls stay legible */
+:root.light .text-white svg {
+  color: var(--text-primary) !important;
+}
+
+:root.light .text-slate-200 {
+  color: var(--text-primary) !important;
+}
+
+/* Modal specific light theme styles */
+:root.light #rules-modal-content,
+:root.light #confirm-modal-content,
+:root.light #user-guide-content {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+:root.light #rules-modal-overlay,
+:root.light #confirm-modal-overlay,
+:root.light #user-guide-overlay {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Restore authentic login button white text for black apple buttons */
+:root.light #apple-signin-btn span,
+:root.light #apple-signin-btn svg {
+  color: #FFFFFF !important;
+}
+
+:root.light #apple-signin-btn .bg-black {
+  background-color: #000000 !important;
+}
